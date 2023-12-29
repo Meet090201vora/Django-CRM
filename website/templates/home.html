@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class = "col-md-6 offset-md-3">
+
+{% if user.is_authenticated %}
+<h1> Hello </h1>
+{% else %}
+
+<div class="col text-center">
+<img src="https://cdn-icons-png.flaticon.com/512/5087/5087607.png" width="100" height="100">
+</div>
+
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <br>
+    <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="Username" required>
+        </div>
+        
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <br>
+        <div class="col text-center">
+        <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</form>
+
+</div>
+{% endif %}
+{% endblock %}
+
